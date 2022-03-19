@@ -9,11 +9,12 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var movieData: MovieDAta?
     
     @IBOutlet weak var tableView: UITableView!
     
     let cellIdentifier: String = "cell"
-    let movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt=20220201"
+    var movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.delegate = self
         self.tableView.dataSource  = self
         
+        movieURL += makeYesterdayString()
+        
         getData()
+    }
+    
+    func makeYesterdayString() -> String {
+        let yesterDay = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyymmdd"
+        let yesterDayString = dateFormatter.string(from: yesterDay)
+        return yesterDayString
     }
 
     func getData() {
@@ -34,8 +45,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     return
                 }
                 if let JSONdata = data {
-                    let dataString = String(data: JSONdata, encoding: .utf8)
-                    print(dataString!)
+                   // let dataString = String(data: JSONdata, encoding: .utf8)
+                   // print(dataString!)
+                    
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodeData = try decoder.decode(MovieDAta.self, from: JSONdata)
+                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
+                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].audiCnt)
+
+                        self.movieData = decodeData
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        
+                    }catch{
+                        print(error)
+                    }
                 }
             }
             task.resume()
@@ -43,15 +70,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyTableViewCell
         
-        cell.movieName.text = indexPath.description
+        cell.movieName.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
         
         return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -65,7 +95,7 @@ struct BoxOfficeResult: Codable{
     let dailyBoxOfficeList: [DailyBoxOfficeList]
 }
 struct DailyBoxOfficeList: Codable {
-    let movieNM: String
+    let movieNm: String
     let audiCnt: String
 }
 
