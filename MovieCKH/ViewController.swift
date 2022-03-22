@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     let cellIdentifier: String = "cell"
     var movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
     
@@ -53,6 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let decodeData = try decoder.decode(MovieDAta.self, from: JSONdata)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].audiCnt)
+                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].rank)
 
                         self.movieData = decodeData
                         
@@ -77,6 +79,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyTableViewCell
         
         cell.movieName.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
+        cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
         
         return cell
     }
@@ -86,6 +89,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    
+        guard let nextViewController: DetailViewController = segue.destination as? DetailViewController else {
+            return
+        }
+        guard let cell: MyTableViewCell = sender as? MyTableViewCell else {
+            return
+        }
+        nextViewController.textToSet = cell.movieName?.text
+    }
+    
+    
 }
 
 struct MovieDAta: Codable {
@@ -97,6 +113,7 @@ struct BoxOfficeResult: Codable{
 struct DailyBoxOfficeList: Codable {
     let movieNm: String
     let audiCnt: String
+    let rank: String
 }
 
 

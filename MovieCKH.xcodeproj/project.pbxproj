@@ -18,6 +18,7 @@
 		02AE83EF27AA4166005A2112 /* MovieCKHUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE83EE27AA4166005A2112 /* MovieCKHUITests.swift */; };
 		02AE83F127AA4166005A2112 /* MovieCKHUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE83F027AA4166005A2112 /* MovieCKHUITestsLaunchTests.swift */; };
 		02AE83FE27AA468D005A2112 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AE83FD27AA468D005A2112 /* MyTableViewCell.swift */; };
+		C4865A0D27E5C269001FA440 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4865A0C27E5C269001FA440 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		02AE83EE27AA4166005A2112 /* MovieCKHUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCKHUITests.swift; sourceTree = "<group>"; };
 		02AE83F027AA4166005A2112 /* MovieCKHUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCKHUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		02AE83FD27AA468D005A2112 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		C4865A0C27E5C269001FA440 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				02AE83DB27AA4166005A2112 /* Info.plist */,
 				02AE83D327AA4165005A2112 /* MovieCKH.xcdatamodeld */,
 				02AE83FD27AA468D005A2112 /* MyTableViewCell.swift */,
+				C4865A0C27E5C269001FA440 /* DetailViewController.swift */,
 			);
 			path = MovieCKH;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				02AE83CF27AA4165005A2112 /* ViewController.swift in Sources */,
 				02AE83CB27AA4165005A2112 /* AppDelegate.swift in Sources */,
 				02AE83CD27AA4165005A2112 /* SceneDelegate.swift in Sources */,
+				C4865A0D27E5C269001FA440 /* DetailViewController.swift in Sources */,
 				02AE83FE27AA468D005A2112 /* MyTableViewCell.swift in Sources */,
 				02AE83D527AA4165005A2112 /* MovieCKH.xcdatamodeld in Sources */,
 			);

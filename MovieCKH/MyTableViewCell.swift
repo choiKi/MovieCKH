@@ -10,6 +10,7 @@ import UIKit
 class MyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieRank: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
