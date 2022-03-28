@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     let cellIdentifier: String = "cell"
-    var movieURL = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
+    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let decoder = JSONDecoder()
                     do {
                         let decodeData = try decoder.decode(MovieDAta.self, from: JSONdata)
+                        
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].audiCnt)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].rank)
@@ -80,6 +81,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.movieName.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
         cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
+        cell.auCnt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt
+        cell.openDt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].openDt
+        
         
         return cell
     }
@@ -99,6 +103,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         nextViewController.textToSet = cell.movieName?.text
+        nextViewController.textToSet2 = cell.movieRank?.text
+        nextViewController.textToset3 = cell.auCnt?.text
+        nextViewController.textToset4 = cell.openDt?.text
     }
     
     
@@ -114,6 +121,7 @@ struct DailyBoxOfficeList: Codable {
     let movieNm: String
     let audiCnt: String
     let rank: String
+    let openDt: String
 }
 
 
