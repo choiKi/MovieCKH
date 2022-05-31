@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     let cellIdentifier: String = "cell"
-    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
+    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +38,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func getData() {
-        if let url = URL(string: movieURL) {
+        guard let url = URL(string: movieURL) else { return }
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
                     print(error!)
                     return
                 }
-                if let JSONdata = data {
-                   // let dataString = String(data: JSONdata, encoding: .utf8)
-                   // print(dataString!)
+                guard let JSONdata = data else { return }
+                    // let dataString = String(data: JSONdata, encoding: .utf8)
+                    //  print(dataString!)
                     
                     let decoder = JSONDecoder()
                     do {
@@ -58,7 +58,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].rank)
 
                         self.movieData = decodeData
-                        
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -66,10 +65,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }catch{
                         print(error)
                     }
-                }
             }
-            task.resume()
-        }
+        task.resume()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,6 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.auCnt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt
         cell.openDt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].openDt
         
+       
         
         return cell
     }
@@ -95,7 +93,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    
         guard let nextViewController: DetailViewController = segue.destination as? DetailViewController else {
             return
         }

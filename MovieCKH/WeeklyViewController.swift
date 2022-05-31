@@ -14,7 +14,7 @@ class WeeklyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     let cellIdentifier: String = "cell"
-    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
+    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
     
    
     override func viewDidLoad() {
