@@ -40,7 +40,19 @@ class WeekDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func goNaver(_ sender: UIButton) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let nextViewController: WebVC = segue.destination as? WebVC else {
+            return
+            
+        }
+        nextViewController.textToSett = textToSet!
+    
+    }
+    
     
 
 }

@@ -4,7 +4,7 @@
 //
 //  Created by 최기훈 on 2022/02/02.
 //
-
+import WebKit
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     let cellIdentifier: String = "cell"
-    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
+    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         nextViewController.textToSet2 = cell.movieRank?.text
         nextViewController.textToset3 = cell.auCnt?.text
         nextViewController.textToset4 = cell.openDt?.text
+    }
+    
+    
+}
+
+class MapViewController: UIViewController {
+    
+    @IBOutlet weak var mapView : WKWebView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let urlKorString = "https://map.naver.com/v5/search/영화관"
+        let urlString = urlKorString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        guard let url = URL(string: urlString) else {return}
+        let request = URLRequest(url: url)
+        mapView.load(request)
+        
     }
     
     
