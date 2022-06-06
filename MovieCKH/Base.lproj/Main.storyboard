@@ -36,8 +36,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="119"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-zR-ElS">
-                                                            <rect key="frame" x="107" y="4.5" width="362" height="119"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-zR-ElS">
+                                                            <rect key="frame" x="-149" y="0.0" width="543" height="119"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGn-z1-E5o">
                                                                     <rect key="frame" x="0.0" y="0.0" width="181" height="119"/>
@@ -47,6 +47,12 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLR-tk-05K">
                                                                     <rect key="frame" x="181" y="0.0" width="181" height="119"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKs-s6-0U4">
+                                                                    <rect key="frame" x="362" y="0.0" width="181" height="119"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -75,14 +81,17 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="aMC-zR-ElS" secondAttribute="trailing" id="Dgy-gE-FhS"/>
                                                         <constraint firstItem="K6R-c9-rND" firstAttribute="leading" secondItem="Sbt-Qe-EsN" secondAttribute="leading" constant="10" id="EyU-Gm-DpV"/>
                                                         <constraint firstAttribute="trailing" secondItem="K6R-c9-rND" secondAttribute="trailing" constant="10" id="QKF-7O-yvD"/>
                                                         <constraint firstAttribute="bottom" secondItem="K6R-c9-rND" secondAttribute="bottom" constant="15" id="chO-5R-log"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aMC-zR-ElS" secondAttribute="bottom" id="iRn-ik-yNC"/>
                                                         <constraint firstItem="K6R-c9-rND" firstAttribute="top" secondItem="Sbt-Qe-EsN" secondAttribute="top" constant="15" id="u4X-n8-kyv"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="auCnt" destination="PGn-z1-E5o" id="ezp-gE-OTF"/>
+                                                    <outlet property="audiAcc" destination="OKs-s6-0U4" id="h1m-bq-eNY"/>
                                                     <outlet property="movieName" destination="wf9-xg-WV0" id="o6e-XZ-djf"/>
                                                     <outlet property="movieRank" destination="Wbc-S2-2VZ" id="V2K-ec-aF6"/>
                                                     <outlet property="openDt" destination="TLR-tk-05K" id="udu-Q2-mDA"/>
@@ -155,6 +164,13 @@
                                                             <color key="textColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0l-hk-1eg">
+                                                            <rect key="frame" x="176" y="48.5" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="NUC-fZ-Q5q">
                                                             <rect key="frame" x="10" y="15" width="374" height="89"/>
                                                             <subviews>
@@ -185,6 +201,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="auCnt" destination="wKF-VD-YRG" id="3hi-WS-wLf"/>
+                                                    <outlet property="audiAcc" destination="X0l-hk-1eg" id="kDy-fR-guO"/>
                                                     <outlet property="movieName" destination="JKK-rT-X4u" id="Jae-cV-r9L"/>
                                                     <outlet property="movieRank" destination="tir-vV-nL3" id="Vsb-KG-9ri"/>
                                                     <outlet property="openDt" destination="GPJ-wu-AkF" id="oPf-p7-eBR"/>
@@ -223,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1c-cg-q0U">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="5" y="88" width="404" height="725"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -243,11 +260,11 @@
                         <constraints>
                             <constraint firstItem="RdB-jB-wO2" firstAttribute="bottom" secondItem="d1c-cg-q0U" secondAttribute="bottom" id="3U1-BA-41V"/>
                             <constraint firstItem="d1c-cg-q0U" firstAttribute="top" secondItem="RdB-jB-wO2" secondAttribute="top" id="bJ2-Ym-IOP"/>
-                            <constraint firstItem="RdB-jB-wO2" firstAttribute="trailing" secondItem="d1c-cg-q0U" secondAttribute="trailing" id="d8V-ma-11p"/>
-                            <constraint firstItem="d1c-cg-q0U" firstAttribute="leading" secondItem="RdB-jB-wO2" secondAttribute="leading" id="s7n-2L-2NM"/>
+                            <constraint firstItem="RdB-jB-wO2" firstAttribute="trailing" secondItem="d1c-cg-q0U" secondAttribute="trailing" constant="5" id="d8V-ma-11p"/>
+                            <constraint firstItem="d1c-cg-q0U" firstAttribute="leading" secondItem="RdB-jB-wO2" secondAttribute="leading" constant="5" id="s7n-2L-2NM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="극장 찾기" selectedImage="magnifyingglass" catalog="system" id="vX0-Dp-xUI"/>
+                    <tabBarItem key="tabBarItem" title="극장 찾기" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="vX0-Dp-xUI"/>
                     <connections>
                         <outlet property="mapView" destination="d1c-cg-q0U" id="nuM-YM-TWW"/>
                     </connections>
@@ -273,7 +290,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Gtw-VO-3k3">
                                                 <rect key="frame" x="30" y="0.0" width="354" height="316"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9K-ne-IfD">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9K-ne-IfD">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="79"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                         <nil key="textColor"/>
@@ -332,11 +349,11 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADG-I9-eo3">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="ADG-I9-eo3">
                                                 <rect key="frame" x="30" y="366" width="354" height="50"/>
                                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="네이버로 검색하기"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system" title="    Search for Naver" cornerStyle="capsule"/>
                                                 <connections>
                                                     <action selector="goNaver:" destination="Nnf-8W-i8B" eventType="touchUpInside" id="6cv-rn-74z"/>
                                                     <action selector="pressNaver:" destination="YZT-im-wfQ" eventType="touchUpInside" id="Jl7-mq-XSW"/>
@@ -416,7 +433,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="342-pk-jeV">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="316"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO8-UZ-HNh">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO8-UZ-HNh">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                         <nil key="textColor"/>
@@ -484,11 +501,11 @@
                                             <constraint firstAttribute="bottom" secondItem="342-pk-jeV" secondAttribute="bottom" id="pwj-CW-Tt9"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeS-Yq-Epx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="HeS-Yq-Epx">
                                         <rect key="frame" x="30" y="366" width="354" height="50"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="네이버로 검색하기"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system" title="     Search for Naver" cornerStyle="capsule"/>
                                         <connections>
                                             <action selector="goNaver:" destination="Nnf-8W-i8B" eventType="touchUpInside" id="A0w-gp-sZI"/>
                                             <action selector="goNaver:" destination="pmU-QW-AXd" eventType="touchUpInside" id="rUv-l3-IDv"/>
@@ -626,7 +643,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lXV-9n-wpP"/>
+        <segue reference="RtW-p6-HK2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.circle.fill" catalog="system" width="128" height="121"/>

@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     let cellIdentifier: String = "cell"
-    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt="
+    var movieURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=482e9514e94a582b2267324135d4f7b3&targetDt="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +53,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     do {
                         let decodeData = try decoder.decode(MovieDAta.self, from: JSONdata)
                         
+                        /*
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].audiCnt)
                         print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].rank)
-
+                        */
+                        
                         self.movieData = decodeData
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -80,7 +82,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
         cell.auCnt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt
         cell.openDt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].openDt
-        
+        cell.audiAcc.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiAcc
        
         
         return cell
@@ -101,7 +103,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         nextViewController.textToSet = cell.movieName?.text
         nextViewController.textToSet2 = cell.movieRank?.text
-        nextViewController.textToset3 = cell.auCnt?.text
+        nextViewController.textToset3 = cell.audiAcc?.text
         nextViewController.textToset4 = cell.openDt?.text
     }
     
@@ -115,7 +117,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlKorString = "https://map.naver.com/v5/search/영화관"
+        // let urlKorString = "https://map.naver.com/v5/search/근처 영화관"
+        let urlKorString = "https://m.map.naver.com/search2/search.naver?query=영화관&sm=hty&style=v5"
+        
         let urlString = urlKorString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         guard let url = URL(string: urlString) else {return}
         let request = URLRequest(url: url)
@@ -135,6 +139,7 @@ struct BoxOfficeResult: Codable{
 struct DailyBoxOfficeList: Codable {
     let movieNm: String
     let audiCnt: String
+    let audiAcc: String
     let rank: String
     let openDt: String
 }

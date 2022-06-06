@@ -13,6 +13,7 @@ class WeekMyTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRank: UILabel!
     @IBOutlet weak var auCnt: UILabel!
     @IBOutlet weak var openDt: UILabel!
+    @IBOutlet weak var audiAcc: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

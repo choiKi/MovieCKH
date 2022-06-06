@@ -83,7 +83,7 @@ class WeeklyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.movieRank.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rank
         cell.auCnt.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].audiCnt
         cell.openDt.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].openDt
-        
+        cell.audiAcc.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].audiAcc
         
         return cell
     }
@@ -104,7 +104,7 @@ class WeeklyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         nextViewController.textToSet = cell.movieName?.text
         nextViewController.textToSet2 = cell.movieRank?.text
-        nextViewController.textToset3 = cell.auCnt?.text
+        nextViewController.textToset3 = cell.audiAcc?.text
         nextViewController.textToset4 = cell.openDt?.text
     }
     
@@ -125,5 +125,6 @@ struct WeeklyBoxOfficeList: Codable {
     let audiCnt: String
     let rank: String
     let openDt: String
+    let audiAcc: String
 }
 
