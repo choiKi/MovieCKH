@@ -80,7 +80,13 @@ class WeeklyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WeekMyTableViewCell
         
         cell.movieName.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].movieNm
-        cell.movieRank.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rank
+        if weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rankOldAndNew == "NEW" {
+            cell.movieRank.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rankOldAndNew
+            cell.movieRank.textColor = .red
+            cell.ifNew = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rank ?? "NEW"
+        }else {
+            cell.movieRank.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].rank
+        }
         cell.auCnt.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].audiCnt
         cell.openDt.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].openDt
         cell.audiAcc.text = weekMovieData?.boxOfficeResult.weeklyBoxOfficeList[indexPath.row].audiAcc
@@ -106,6 +112,7 @@ class WeeklyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         nextViewController.textToSet2 = cell.movieRank?.text
         nextViewController.textToset3 = cell.audiAcc?.text
         nextViewController.textToset4 = cell.openDt?.text
+        nextViewController.textToSet5 = cell.ifNew
     }
     
     
@@ -126,5 +133,6 @@ struct WeeklyBoxOfficeList: Codable {
     let rank: String
     let openDt: String
     let audiAcc: String
+    let rankOldAndNew: String
 }
 

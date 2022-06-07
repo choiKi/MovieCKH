@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400.00000000000006" y="855.80357142857144"/>
+            <point key="canvasLocation" x="-287" y="809"/>
         </scene>
         <!--주간 박스오피스-->
         <scene sceneID="blp-Wo-1MN">
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUX-pc-fyH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1453.6231884057972" y="855.80357142857144"/>
+            <point key="canvasLocation" x="1017" y="809"/>
         </scene>
         <!--극장 찾기-->
         <scene sceneID="fBD-1w-GjM">
@@ -271,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eid-3H-elO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2307" y="855"/>
+            <point key="canvasLocation" x="1497" y="104"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="hK9-Fs-P99">
@@ -414,7 +414,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Bc-5U-Let" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="YZT-im-wfQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="400" y="1580"/>
+            <point key="canvasLocation" x="328" y="809"/>
         </scene>
         <!--Week Detail View Controller-->
         <scene sceneID="QkO-f4-okv">
@@ -433,7 +433,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="342-pk-jeV">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="316"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO8-UZ-HNh">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO8-UZ-HNh">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                         <nil key="textColor"/>
@@ -558,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCe-3W-VI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="1580"/>
+            <point key="canvasLocation" x="1645" y="809"/>
         </scene>
         <!--WebVC-->
         <scene sceneID="tCD-qV-O7J">
@@ -600,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgY-Zm-I5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="2375"/>
+            <point key="canvasLocation" x="1017" y="1554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zmZ-1R-Jqv">
@@ -639,7 +639,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndl-nP-mpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="104"/>
+            <point key="canvasLocation" x="586" y="104"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

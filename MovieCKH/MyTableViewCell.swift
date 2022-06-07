@@ -15,6 +15,8 @@ class MyTableViewCell: UITableViewCell {
     @IBOutlet weak var openDt: UILabel!
     @IBOutlet weak var audiAcc: UILabel!
     
+    var ifNew: String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

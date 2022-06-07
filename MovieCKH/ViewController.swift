@@ -25,7 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.dataSource  = self
         
         movieURL += makeYesterdayString()
-        
         getData()
     }
     
@@ -53,12 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     do {
                         let decodeData = try decoder.decode(MovieDAta.self, from: JSONdata)
                         
-                        /*
-                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
-                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].audiCnt)
-                        print(decodeData.boxOfficeResult.dailyBoxOfficeList[0].rank)
-                        */
-                        
                         self.movieData = decodeData
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -79,7 +72,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyTableViewCell
         
         cell.movieName.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
-        cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
+        
+        if movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rankOldAndNew == "NEW" {
+            cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rankOldAndNew
+            cell.movieRank.textColor = .red
+            cell.ifNew = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank ?? "NEW"
+        }else {
+            cell.movieRank.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
+        }
+        
         cell.auCnt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt
         cell.openDt.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].openDt
         cell.audiAcc.text = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiAcc
@@ -105,6 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         nextViewController.textToSet2 = cell.movieRank?.text
         nextViewController.textToset3 = cell.audiAcc?.text
         nextViewController.textToset4 = cell.openDt?.text
+        nextViewController.textToSet5 = cell.ifNew
     }
     
     
@@ -116,8 +118,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // let urlKorString = "https://map.naver.com/v5/search/근처 영화관"
         let urlKorString = "https://m.map.naver.com/search2/search.naver?query=영화관&sm=hty&style=v5"
         
         let urlString = urlKorString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -142,6 +142,7 @@ struct DailyBoxOfficeList: Codable {
     let audiAcc: String
     let rank: String
     let openDt: String
+    let rankOldAndNew: String
 }
 
 

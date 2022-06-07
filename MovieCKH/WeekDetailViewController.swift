@@ -18,6 +18,7 @@ class WeekDetailViewController: UIViewController {
     var textToSet2: String?
     var textToset3: String?
     var textToset4: String?
+    var textToSet5: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,11 @@ class WeekDetailViewController: UIViewController {
         
         super.viewWillAppear(animated)
         movieName.text = self.textToSet
-        rank.text = "\(self.textToSet2!) 위"
+        if textToSet2 == "NEW" {
+            rank.text = "\(self.textToSet5!) 위"
+        }else{
+            rank.text = "\(self.textToSet2!) 위"
+        }
         auCnt.text = "\(self.textToset3!) 명"
         openDt.text = self.textToset4
         
